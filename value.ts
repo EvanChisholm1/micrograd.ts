@@ -65,6 +65,7 @@ export class Value {
         this.grad = 1;
         for(const s of topo.reverse()) {
             s._backward();
+            s.visited = false;
         }
     }
 }

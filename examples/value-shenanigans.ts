@@ -2,6 +2,7 @@ import { Value } from "../value";
 
 const a = new Value(5);
 console.log(a);
+console.log(a.sub(3));
 const b = a.mult(5);
 console.log(b);
 const c = new Value(2);

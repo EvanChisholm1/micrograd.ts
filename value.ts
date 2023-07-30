@@ -26,7 +26,7 @@ export class Value {
     }
 
     mult(b: number | Value) {
-        const other = typeof b === "object" ? b : new Value(b);
+        const other = b instanceof Value ? b : new Value(b);
         const out = new Value(this.value * other.value, [this, other]);
 
         const _backward = () => {
@@ -35,6 +35,13 @@ export class Value {
         };
 
         out._backward = _backward;
+        return out;
+    }
+
+    sub(b: number | Value) {
+        const other = b instanceof Value ? b : new Value(b);
+        const out = this.add(other.mult(-1));
+
         return out;
     }
 
